@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="GameOfLife.Views.Game"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:qc="http://QuickConverter.CodePlex.com/"
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <ItemsControl ItemsSource="{Binding GameGrid}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="{Binding Rows}"
+                                 Columns="{Binding Columns}">
+                    </UniformGrid>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="{qc:Binding '$P ? \'Green\' : \'Gray\'', P={Binding}}"
+                            BorderBrush="Gray"
+                            BorderThickness="1" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</UserControl>
